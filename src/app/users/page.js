@@ -1,4 +1,6 @@
+import UserCard from "@/components/user-card";
 import { IconLogout, IconLogout2, IconUser, IconUsersGroup, IconUsersPlus,IconPlus } from "@tabler/icons-react";
+import { usersData } from "../../../mock/user-data";
 export default function Users() {
   return (
     <section id="container" className="flex h-screen justify-center">
@@ -21,47 +23,15 @@ export default function Users() {
           placeholder="Cari user"
           className="flex w-[98%] h-[5vh] mb-5 p-4 text-[14,5px] border border-gray-300 rounded-[7px]"
         />
-        <div className="user-card flex w-[97%] justify-between items-center border border-gray-300 rounded-[7px] p-3 mb-2 bg-white text-[15px] leading-tight">
-          <div className="user-info">
-            <h2 className="text-base font-bold text-[16px] font-sans">Rahmat Saudi Al Fathir As</h2>
-            <p className="my-[2px] text-gray-600 font-sans">rahmatsaudi@universitasmulia.ac.id</p>
-            <div className="mt-1.5">
-              <span className="inline-block bg-black text-white px-1 py-[1px] text-[10px] rounded-[2px] font-sans mr-1.5">Admin</span>
-              <span className="inline-block bg-black text-white px-1 py-[1px] text-[10px] rounded-[2px] font-sans">Employee</span>
-            </div>
-          </div>
-          <div className="status aktif flex text-lg font-bold font-sans">Aktif</div>
-        </div>
-        <div className="user-card flex w-[97%] justify-between items-center border border-gray-300 rounded-[7px] p-3 mb-2 bg-white text-[15px] leading-tight">
-          <div className="user-info">
-            <h3 className="text-base font-bold text-[16px] font-sans">Lintang</h3>
-            <p className="my-[2px] text-gray-600 font-sans">lintang@universitasmulia.ac.id</p>
-            <div className="mt-1.5">
-              <span className="inline-block bg-black text-white px-1 py-[1px] text-[10px] rounded-[2px] font-sans">Employee</span>
-            </div>
-          </div>
-          <div className="status aktif flex text-lg font-bold font-sans">Aktif</div>
-        </div>
-        <div className="user-card flex w-[97%] justify-between items-center border border-gray-300 rounded-[7px] p-3 mb-2 bg-white text-[15px] leading-tight">
-          <div className="user-info">
-            <h4 className="text-base font-bold text-[16px] font-sans">Shafira</h4>
-            <p className="my-[2px] text-gray-600 font-sans">shafira@universitasmulia.ac.id</p>
-            <div className="mt-1.5">
-              <span className="inline-block bg-black text-white px-1 py-[1px] text-[10px] rounded-[2px] font-sans">Employee</span>
-            </div>
-          </div>
-          <div className="status aktif flex text-lg font-bold font-sans">Aktif</div>
-        </div>
-        <div className="user-card flex w-[97%] justify-between items-center border border-gray-300 rounded-[7px] p-3 mb-2 bg-white text-[15px] leading-tight">
-          <div className="user-info">
-            <h5 className="text-base font-bold text-[16px] font-sans">Lebah Ganteng</h5>
-            <p className="my-[2px] text-gray-600 font-sans">lebahganteng@universitasmulia.ac.id</p>
-            <div className="mt-1.5">
-              <span className="inline-block bg-black text-white px-1 py-[1px] text-[10px] rounded-[2px] font-sans">Employee</span>
-            </div>
-          </div>
-          <div className="status suspended flex text-lg font-bold font-sans">Suspended</div>
-        </div>
+        {usersData.map((User, index) => (
+          <UserCard 
+          key={index}
+          name={User.name}
+          email={User.email}
+          roles={User.roles}
+          status={User.status}  
+          />
+       ))} 
       </section>
       <button className="absolute bottom-10 right-6 bg-gray-300 hover:bg-gray-100 text-xl w-15 h-10 rounded flex items-center justify-center ">
         <IconPlus />
