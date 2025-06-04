@@ -1,9 +1,8 @@
-import UserCard from "@/components/user-card";
 import { IconLogout, IconLogout2, IconUser, IconUsersGroup, IconUsersPlus,IconPlus } from "@tabler/icons-react";
-import { usersData } from "../../../mock/user-data";
-export default function Users() {
-  return (
-    <section id="container" className="flex h-screen justify-center">
+
+export default function AdminLayout({ children }) {
+  return <section>
+  <section id="container" className="flex h-screen justify-center">
       <section id="navigation" className="bg-white w-[15%] border-r border-gray-300 p-4 ">
         <h1 className="text-[30px] mb-5  font-sans  font-bold text-center">Connect</h1>
         <div className="nav-buttons flex flex-col items-center gap-4 p-2 w-full mb-2 font-bold text-[18px]">
@@ -18,24 +17,10 @@ export default function Users() {
           </button>
         </div>
       </section>
+
       <section id="content" className="bg-white w-[85%] p-5">
-        <input
-          placeholder="Cari user"
-          className="flex w-[98%] h-[5vh] mb-5 p-4 text-[14,5px] border border-gray-300 rounded-[7px]"
-        />
-        {usersData.map((User, index) => (
-          <UserCard 
-          key={index}
-          name={User.name}
-          email={User.email}
-          roles={User.roles}
-          status={User.status}  
-          />
-       ))} 
+        {children}
       </section>
-      <button className="absolute bottom-10 right-6 bg-gray-300 hover:bg-gray-100 text-xl w-15 h-10 rounded flex items-center justify-center ">
-        <IconPlus />
-      </button>
-    </section>
-  );
+      </section>
+      </section>
 }
