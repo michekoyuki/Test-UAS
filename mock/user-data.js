@@ -1,25 +1,25 @@
 export const usersData = [
   {
-    name: "Rahmat Saudi Al Fathir As",
-    email: "rahmatsaudi@universitasmulia.ac.id",
+    name: "Leanne Graham",
+    email: "Sincere@april.biz",
     status: "Aktif",
     roles: "Admin",
   },
   {
-    name: "Lintang",
-    email: "lintang@universitasmulia.ac.id",
+    name: "Ervin Howell",
+    email: "Shanna@melissa.tv",
     status: "Aktif",
     roles: "Employee",
   },
   {
-    name: "Shafira",
-    email: "shafira@universitasmulia.ac.id",
+    name: "Clementine Bauch",
+    email: 	"Nathan@yesenia.net",
     status: "Aktif",
     roles: "Employee",
   },
   {
-    name: "Lebah ganteng",
-    email: "lebahganteng@universitasmulia.ac.id",
+    name: "Patricia Lebsack",
+    email: "Julianne.OConner@kory.org",
     status: "Suspended",
     roles: "Employee",
   },

@@ -1,9 +1,31 @@
+ "use client";
 
-
+import useSWR from "swr";
 import UserCard from "@/components/user-card";
 import { usersData } from "../../../../mock/user-data";
 import { IconLogout, IconLogout2, IconUser, IconUsersGroup, IconUsersPlus,IconPlus } from "@tabler/icons-react";
 export default function Users() {
+  const fetcher = (...args) => fetch(...args).then(res => res.json());
+  const { data: users, error, isLoading } = useSWR(`https://jsonplaceholder.typicode.com/users`, fetcher);
+    
+  if (isLoading) { 
+     return  (
+    <div> 
+      <p>loading...</p> 
+    </div>
+  );
+}
+
+    if (error) { 
+      return (
+    <div> 
+      <p>Gagal mengambil data</p> 
+    </div>
+  );
+}
+
+console.log(users);
+
   return (
     <section id="container" className="flex h-screen justify-center">
       <section id="content" className="bg-white w-[85%] p-5">
