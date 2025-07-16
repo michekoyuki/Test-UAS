@@ -1,8 +1,10 @@
 import { IconEdit, IconTrash, IconMail, IconPhone, IconDots } from "@tabler/icons-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function UserCard({ name, email, roles, status }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   const getStatusColor = (status) => {
     switch (status.toLowerCase()) {
@@ -27,18 +29,31 @@ export default function UserCard({ name, email, roles, status }) {
     }
   };
 
+  const handleViewProfile = () => {
+    // Navigate to user profile page
+    router.push(`/users/1`); // Using a static ID for now
+  };
+
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
           {/* Avatar */}
-          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+          <div 
+            className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-lg cursor-pointer"
+            onClick={handleViewProfile}
+          >
             {name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)}
           </div>
           
           {/* User Info */}
           <div>
-            <h3 className="font-semibold text-gray-900">{name}</h3>
+            <h3 
+              className="font-semibold text-gray-900 cursor-pointer hover:text-blue-600"
+              onClick={handleViewProfile}
+            >
+              {name}
+            </h3>
             <div className="flex items-center gap-4 mt-1">
               <div className="flex items-center gap-1 text-sm text-gray-500">
                 <IconMail size={14} />
@@ -73,7 +88,10 @@ export default function UserCard({ name, email, roles, status }) {
             </button>
             {isMenuOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-10">
-                <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                <button 
+                  onClick={handleViewProfile}
+                  className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                >
                   View Details
                 </button>
                 <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
