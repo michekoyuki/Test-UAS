@@ -120,9 +120,7 @@ export default function RolesPage() {
           <IconShield className="text-blue-600 mt-1" size={20} />
           <div>
             <h4 className="font-medium text-blue-900">Security Tip</h4>
-            <p className="text-sm text-blue-700 mt-1">
-              Regularly review and update role permissions to maintain system security. 
-              Consider implementing the principle of least privilege.
+            <p className="text-sm text-blue-700 mt-1">.
             </p>
           </div>
         </div>

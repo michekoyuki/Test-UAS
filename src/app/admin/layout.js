@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   IconLogout2,
@@ -11,13 +11,17 @@ import {
 } from "@tabler/icons-react";
 import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
+import { useUser } from "@/context/UserContext"; 
 
 export default function AdminLayout({ children }) {
   const router = useRouter();
   const pathname = usePathname();
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
+  const { user } = useUser(); 
+
   const navItems = [
+    { path: "/admin/home", icon: IconSearch, label: "Home" }, 
     { path: "/admin/users", icon: IconUser, label: "Users" },
     { path: "/admin/roles", icon: IconUsersPlus, label: "Roles" },
     { path: "/admin/news", icon: IconNews, label: "News" },
@@ -26,14 +30,6 @@ export default function AdminLayout({ children }) {
 
   const handleLogout = () => {
     router.push("/");
-  };
-
-  // Mock user data for profile
-  const currentUser = {
-    name: "Brando Windah",
-    email: "brando@jobdesk.com",
-    role: "Admin",
-    avatar: null,
   };
 
   return (
@@ -117,13 +113,13 @@ export default function AdminLayout({ children }) {
                 className="flex items-center gap-3 p-2 hover:bg-gray-100 rounded-lg transition-all"
               >
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-medium">
-                  {currentUser.name.charAt(0)}
+                  {user?.name?.charAt(0).toUpperCase() || "?"}
                 </div>
                 <div className="text-left hidden md:block">
                   <p className="text-sm font-medium text-gray-900">
-                    {currentUser.name}
+                    {user.name}
                   </p>
-                  <p className="text-xs text-gray-500">{currentUser.role}</p>
+                  <p className="text-xs text-gray-500">{user.role}</p>
                 </div>
               </button>
 
@@ -156,9 +152,7 @@ export default function AdminLayout({ children }) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto">
-          {children}
-        </main>
+        <main className="flex-1 overflow-y-auto">{children}</main>
       </div>
     </div>
   );

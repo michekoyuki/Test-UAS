@@ -18,11 +18,13 @@ export const metadata = {
   },
 };
 
+import { UserProvider } from '@/context/UserContext';
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
-        {children}
+    <html>
+      <body>
+        <UserProvider>{children}</UserProvider>
       </body>
     </html>
   );
